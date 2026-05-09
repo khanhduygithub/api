@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Auth
+RewriteRule ^auth/ios$ api/auth.php [L,QSA]
+
+# Check access
+RewriteRule ^check/freefire/([0-9.]+)$ api/check.php [L,QSA]
+
+# Offsets
+RewriteRule ^offsets/freefire/([0-9.]+)$ api/get_offsets.php [L,QSA]
+
+# UDID
+RewriteRule ^check_openid$ api/check_openid.php [L,QSA]
+RewriteRule ^request_open_id$ api/request_openid.php [L,QSA]
+
+# Block direct access to database
+<Files "database.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
